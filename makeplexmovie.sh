@@ -21,7 +21,7 @@ eval set -- "$TEMP"
 # extract options and their arguments into variables.
 while true ; do
     case "$1" in
-        -d|--dir)
+        -b|--both)
             case "$2" in
                 "") shift 2 ;;
                 *) DIR_RENAME=$2 ; MOVIE_RENAME=$2 ; shift 2 ;;
