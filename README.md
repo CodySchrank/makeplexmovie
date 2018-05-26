@@ -1,6 +1,6 @@
 # makeplexmovie
 
-Preps a movie for plex by stripping extraneous files, offering rename options, and then moving it to plex movie location.
+Preps a movie for plex by stripping extraneous files, offering rename options, and then moving it to plex movie location. If subtitles exist it moves those too. Currently only finds .mp4 and .mkv
 
 # Install
 
