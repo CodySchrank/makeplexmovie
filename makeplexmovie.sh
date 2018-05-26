@@ -15,7 +15,7 @@ DIR_RENAME=""
 MOVIE_RENAME=""
 
 # read the options
-TEMP=`getopt -o d:r:m:h --long dir:,rename:,movie:,help -n 'makeplexmovie.sh' -- "$@"`
+TEMP=`getopt -o b:d:r:m:h --long both:,dir:,rename:,movie:,help -n 'makeplexmovie.sh' -- "$@"`
 eval set -- "$TEMP"
 
 # extract options and their arguments into variables.
