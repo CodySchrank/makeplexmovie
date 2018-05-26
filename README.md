@@ -4,6 +4,8 @@ Preps a movie for plex by stripping extraneous files, offering rename options, a
 
 # Install
 
+Must have [progress](https://github.com/Xfennec/progress)
+
 Clone to script folder
 
 In .bashrc add:
