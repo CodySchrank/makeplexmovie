@@ -63,8 +63,8 @@ else
     cd "$DIR"
 fi
 
-# Finds a movie with type .mp4 or .mkv - stops on the first file found
-MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" \) -print -quit)"
+# Finds a movie file (stops on the first file found)
+MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \) -print -quit)"
 prefix="./"
 MOVIE=${MOVIE#$prefix}
 MOVIE_EXTENTION="${MOVIE##*.}"
@@ -72,7 +72,7 @@ MOVIE="${MOVIE%.*}"
 
 if [ -z "$MOVIE" ]
 then
-    return "Could not find movie of type .mp4 or .mkv"
+    return "Could not find movie of type .mp4, .mkv, or .avi"
 else
     echo -e "Found: $MOVIE\n"
     echo -e "It is $MOVIE_EXTENTION\n"
