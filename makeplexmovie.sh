@@ -64,7 +64,13 @@ else
 fi
 
 # Finds a movie file (stops on the first file found)
-MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \) -print -quit)"
+MOVIES="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \) -print)"
+for movie in MOVIES; do
+    echo movie
+done
+
+return 0
+
 prefix="./"
 MOVIE=${MOVIE#$prefix}
 MOVIE_EXTENTION="${MOVIE##*.}"
