@@ -58,7 +58,8 @@ echo -e "Ok lets go!\n"
 
 if [ -z "$DIR" ]
 then
-    return "Must have dir.  For help use --help"
+    echo -e "No dir specified so attempting to find one"
+    DIR="$(find . -mindepth 1 -maxdepth 1 -type d)"
 else
     cd "$DIR"
 fi
