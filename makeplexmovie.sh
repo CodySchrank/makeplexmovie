@@ -116,5 +116,5 @@ if [ $WATCH == 1 ]
 then
     sudo mv "$DIR" "$PLEX_MOVIE_LOCATION" & sudo watch progress -w
 else
-    sudo mv "$DIR" "$PLEX_MOVIE_LOCATION"
+    sudo mv "$DIR" "$PLEX_MOVIE_LOCATION" &
 fi
