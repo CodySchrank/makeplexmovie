@@ -4,12 +4,6 @@
 PLEX_MOVIE_LOCATION="/mnt/plexy/Plex/Movies/"
 ############################################
 
-# REQUIRED -d --dir the movie dir
-# OPTIONAL -b --both rename the movie and the dir to this (dont use -r and -m with this)
-# OPTIONAL -r --rename rename the dir to this
-# OPTIONAL -m --movie rename the movie to this (dont type extention)
-# OPTIONAL -h --help show options
-
 DIR=""
 DIR_RENAME=""
 MOVIE_RENAME=""
@@ -47,7 +41,7 @@ while true ; do
                 "") shift 2 ;;
                 *) MOVIE_RENAME=$2 ; shift 2 ;;
             esac ;;
-        -h|--help) echo -e "# OPTIONAL -d --dir the movie dir (if none provided script looks in current dir for any movie file and continues)
+        -h|--help) echo -e "# OPTIONAL -d --dir the movie dir (if none provided script looks in closest dirs for any movie file and continues)
 # OPTIONAL -b --both rename the movie and the dir to this (dont use -r and -m with this)
 # OPTIONAL -r --rename rename the dir to this
 # OPTIONAL -m --movie rename the movie to this (dont type extention)
@@ -67,9 +61,9 @@ if [ -z "$DIR" ]
 then
     echo -e "No dir specified so attempting to find one"
     DIR="$(find . -mindepth 1 -maxdepth 1 -type d)"
-else
-    cd "$DIR"
 fi
+
+cd "$DIR"
 
 # Finds a movie file (stops on the first file found)
 MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \)) -print -quit"
