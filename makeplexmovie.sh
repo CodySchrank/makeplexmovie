@@ -13,6 +13,7 @@ PLEX_MOVIE_LOCATION="/mnt/plexy/Plex/Movies/"
 DIR=""
 DIR_RENAME=""
 MOVIE_RENAME=""
+WATCH=0
 
 # read the options
 TEMP=`getopt -o b:d:r:m:h --long both:,dir:,rename:,movie:,help -n 'makeplexmovie.sh' -- "$@"`
@@ -36,15 +37,21 @@ while true ; do
                 "") shift 2 ;;
                 *) DIR_RENAME=$2 ; shift 2 ;;
             esac ;;
+        -w|--watch)
+            case "$2" in
+                "") shift 2 ;;
+                *) WATCH=1 ; shift 2 ;;
+            esac ;;
         -m|--movie)
             case "$2" in
                 "") shift 2 ;;
                 *) MOVIE_RENAME=$2 ; shift 2 ;;
             esac ;;
-        -h|--help) echo -e "# REQUIRED -d --dir the movie dir
+        -h|--help) echo -e "# OPTIONAL -d --dir the movie dir (if none provided script looks in current dir for any movie file and continues)
 # OPTIONAL -b --both rename the movie and the dir to this (dont use -r and -m with this)
 # OPTIONAL -r --rename rename the dir to this
 # OPTIONAL -m --movie rename the movie to this (dont type extention)
+# OPTIONAL -w --watch watch progress of moving file
 # OPTIONAL -h --help show options"
             return; shift ;;
         --) shift ; break ;;
@@ -111,5 +118,9 @@ then
 fi
 
 # DONT USE DIR_RENAME OR MOVIE_RENAME FROM HERE 
-
-sudo mv "$DIR" "$PLEX_MOVIE_LOCATION" & sudo watch progress -w
+if [ $WATCH == 1 ]
+then
+    sudo mv "$DIR" "$PLEX_MOVIE_LOCATION" & sudo watch progress -w
+else
+    sudo mv "$DIR" "$PLEX_MOVIE_LOCATION"
+fi
