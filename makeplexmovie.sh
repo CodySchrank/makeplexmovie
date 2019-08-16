@@ -66,7 +66,7 @@ fi
 cd "$DIR"
 
 # Finds a movie file (stops on the first file found)
-MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \)) -print -quit"
+MOVIE="$(find . -type f \( -name "*.mp4" -or -name "*.mkv" -or -name "*.avi" \))"
 prefix="./"
 MOVIE=${MOVIE#$prefix}
 MOVIE_EXTENTION="${MOVIE##*.}"
