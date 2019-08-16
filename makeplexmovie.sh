@@ -112,7 +112,7 @@ then
 fi
 
 # DONT USE DIR_RENAME OR MOVIE_RENAME FROM HERE 
-if [ $WATCH == 1 ]
+if (( $WATCH == 1 ))
 then
     sudo mv "$DIR" "$PLEX_MOVIE_LOCATION" & sudo watch progress -w
 else
